@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  JAVA_VERSION: '21'
+  NODE_VERSION: '18'
 
 jobs:
   demonstrando-estrutura:
@@ -37,7 +37,7 @@ jobs:
       - name: Variaveis e Contexto
         run: | 
           echo " == VARIAVEIS E CONTEXTO == "
-          echo " Variaveis env: {{ env.JAVA_VERSION }} "
+          echo " Variaveis env: {{ env.NODE_VERSION }} "
           echo " 1. env: Definicao de variaveis de ambiente "
           echo " 2. contextos: Acessos a informacoes do workflow, job, runner, etc. "
           echo ""
