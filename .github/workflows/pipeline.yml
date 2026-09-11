@@ -37,7 +37,7 @@ jobs:
       - name: Variaveis e Contexto
         run: | 
           echo " == VARIAVEIS E CONTEXTO == "
-          echo " Variaveis env: { env. JAVA_VERSION } 
+          echo " Variaveis env: { env. JAVA_VERSION } "
           echo " 1. env: Definicao de variaveis de ambiente "
           echo " 2. contextos: Acessos a informacoes do workflow, job, runner, etc. "
           echo ""
