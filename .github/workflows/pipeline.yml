@@ -45,39 +45,70 @@
 #
 
 
-name: Hello Github Actions
+#name: Hello Github Actions
+#
+#on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+#
+#jobs:
+#  hello-job:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#
+#      - name: Checkout codigo
+#        uses: actions/checkout@v4
+#
+#      - name: Hello World
+#        run: echo " Hello Github actions "
+#
+#      - name: Mostrar Informacoes Do sistema
+#        run: |
+#          echo " Sistema Operacional: {{ runner.os }} "
+#          echo " Diretorio Atual: $(pwd)"
+#          echo " Data Atual: $(date)"
+#          echo " Usuario: $(whoami)"
+#
+#      - name: Listar Arquivos do Repositorio
+#        run: ls -la
+#
+#      - name: Comandos multiplos
+#        run: |
+#          echo " Este e o Lab 01 do curso de github actions"
+#          echo " Workflow executado com sucesso"
+#          echo " Pronto para os proximos desafios"
+        
+
+
+name: Jobs Paralelo e Sequencial
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  [ push ]
 
 jobs:
-  hello-job:
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: checkout/actions@v4
+      - name: lint
+        run: echo "Lint OK"
+
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: testes
+        run: echo "Testes OK"
+
+  build:
+    needs: [lint, testes]
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout codigo
-        uses: actions/checkout@v4
-
-      - name: Hello World
-        run: echo " Hello Github actions "
-
-      - name: Mostrar Informacoes Do sistema
-        run: |
-          echo " Sistema Operacional: {{ runner.os }} " 
-          echo " Diretorio Atual: $(pwd)"
-          echo " Data Atual: $(date)"
-          echo " Usuario: $(whoami)"
-
-      - name: Listar Arquivos do Repositorio
-        run: ls -la
-
-      - name: Comandos multiplos
-        run: |
-          echo " Este e o Lab 01 do curso de github actions" 
-          echo " Workflow executado com sucesso"
-          echo " Pronto para os proximos desafios"
-        
+      - uses: actions/checkout@v4
+      - name: build
+        run: echo "build OK
