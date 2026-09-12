@@ -112,3 +112,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: build
         run: echo "build OK"
+
+  publicar:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publicar
+        run: echo "Publicado com sucesso"
